@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'Ambassade du Royaume des Cieux</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; background: #fff; color: #222; }
+
+/* NAV */
+nav { background: #fff; border-bottom: 1px solid #e0d9c8; display: flex; align-items: center; justify-content: space-between; padding: 12px 32px; position: sticky; top: 0; z-index: 100; }
+.nav-logo { display: flex; align-items: center; gap: 10px; }
+.nav-logo-icon { width: 44px; height: 44px; background: #7B1C1C; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #D4AF37; font-size: 20px; font-weight: bold; }
+.nav-brand-main { font-size: 13px; font-weight: 800; color: #1a1a1a; letter-spacing: 0.5px; }
+.nav-brand-sub { font-size: 9px; color: #999; letter-spacing: 2px; }
+.nav-links { display: flex; gap: 22px; font-size: 13px; font-weight: 600; }
+.nav-links a { color: #333; text-decoration: none; }
+.nav-links a:hover { color: #D4AF37; }
+.nav-links a.active { color: #D4AF37; border-bottom: 2px solid #D4AF37; padding-bottom: 2px; }
+.btn-nav-don { background: #7B1C1C; color: #fff; border: none; padding: 9px 18px; border-radius: 4px; font-size: 13px; font-weight: 700; cursor: pointer; }
+.btn-nav-don:hover { background: #9a2222; }
+
+/* HERO */
+.hero { background: #1a0a0a; min-height: 380px; display: flex; align-items: center; padding: 60px 32px; position: relative; overflow: hidden; }
+.hero-bg-shape { position: absolute; right: 0; top: 0; bottom: 0; width: 50%; background: #5a2020; opacity: 0.4; clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%); }
+.hero-content { position: relative; z-index: 1; max-width: 500px; }
+.hero-eyebrow { color: #D4AF37; font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+.hero-title1 { font-size: 42px; font-weight: 900; color: #fff; line-height: 1; }
+.hero-title2 { font-size: 44px; font-weight: 900; color: #D4AF37; line-height: 1; margin-bottom: 18px; }
+.hero-sub { color: #ccc; font-size: 14px; line-height: 1.6; margin-bottom: 28px; }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-outline-gold { border: 2px solid #D4AF37; color: #D4AF37; background: transparent; padding: 10px 18px; border-radius: 4px; font-size: 12px; font-weight: 700; cursor: pointer; }
+.btn-outline-white { border: 2px solid #fff; color: #fff; background: transparent; padding: 10px 18px; border-radius: 4px; font-size: 12px; font-weight: 700; cursor: pointer; }
+.btn-gold-solid { background: #D4AF37; color: #1a1a1a; border: none; padding: 10px 18px; border-radius: 4px; font-size: 12px; font-weight: 700; cursor: pointer; }
+
+/* TICKER */
+.ticker { background: #fdf8ee; border-top: 1px solid #e8dfc0; border-bottom: 1px solid #e8dfc0; padding: 10px 32px; display: flex; align-items: center; gap: 16px; font-size: 12px; overflow: hidden; }
+.ticker-badge { background: #7B1C1C; color: #fff; padding: 4px 12px; border-radius: 3px; font-size: 11px; font-weight: 800; white-space: nowrap; }
+.ticker-scroll { flex: 1; overflow: hidden; white-space: nowrap; color: #444; }
+.ticker-scroll span { margin-right: 40px; }
+.ticker-dot { color: #D4AF37; margin-right: 40px; }
+.ticker-see-all { color: #D4AF37; font-weight: 700; white-space: nowrap; cursor: pointer; }
+
+/* SERVICES */
+.services-section { padding: 0; }
+.services-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid #e8dfc0; }
+.services-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid #e8dfc0; }
+.service-card { padding: 24px 20px; border-right: 1px solid #e8dfc0; background: #fff; }
+.service-card:last-child { border-right: none; }
+.service-icon { width: 50px; height: 50px; background: #D4AF37; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 12px; }
+.service-title { font-size: 13px; font-weight: 800; color: #1a1a1a; letter-spacing: 0.5px; margin-bottom: 10px; text-transform: uppercase; }
+.service-items { list-style: none; margin-bottom: 16px; }
+.service-items li { font-size: 12px; color: #555; padding: 3px 0; display: flex; align-items: center; gap: 6px; }
+.service-items li::before { content: '▸'; color: #D4AF37; font-size: 10px; }
+.btn-dark { background: #7B1C1C; color: #fff; border: none; padding: 8px 18px; border-radius: 3px; font-size: 11px; font-weight: 800; cursor: pointer; letter-spacing: 0.5px; }
+.btn-dark:hover { background: #9a2222; }
+.btn-dark-outline { background: transparent; color: #7B1C1C; border: 1.5px solid #7B1C1C; padding: 8px 18px; border-radius: 3px; font-size: 11px; font-weight: 800; cursor: pointer; }
+.btn-dark-outline:hover { background: #7B1C1C; color: #fff; }
+
+/* CONTENT SECTION */
+.content-section { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; border-top: 1px solid #e8dfc0; }
+.content-col { padding: 28px 24px; border-right: 1px solid #e8dfc0; }
+.content-col:last-child { border-right: none; }
+.section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.section-title { font-size: 12px; font-weight: 800; color: #7B1C1C; letter-spacing: 2px; text-transform: uppercase; }
+.see-all { color: #D4AF37; font-size: 12px; font-weight: 700; cursor: pointer; }
+
+/* SERMONS */
+.sermon-main { background: #2a1010; border-radius: 6px; padding: 14px; margin-bottom: 12px; }
+.sermon-play-box { background: #4a2020; border-radius: 4px; height: 100px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; cursor: pointer; }
+.play-circle { width: 40px; height: 40px; border-radius: 50%; background: rgba(212,175,55,0.9); display: flex; align-items: center; justify-content: center; font-size: 16px; color: #1a1a1a; }
+.sermon-main-title { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+.sermon-main-author { font-size: 11px; color: #ccc; }
+.sermon-main-time { font-size: 11px; color: #D4AF37; margin-top: 4px; }
+.sermon-item { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
+.sermon-thumb { width: 60px; height: 42px; background: #4a2020; border-radius: 4px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #D4AF37; }
+.sermon-item-title { font-size: 12px; font-weight: 600; color: #222; }
+.sermon-item-time { font-size: 11px; color: #888; }
+
+/* MEDITATION */
+.meditation { text-align: center; }
+.quote-mark { font-size: 48px; color: #D4AF37; line-height: 0.8; margin-bottom: 8px; }
+.quote-text { font-size: 17px; font-style: italic; color: #1a1a1a; line-height: 1.5; font-weight: 700; margin: 10px 0; }
+.quote-ref { font-size: 12px; color: #888; margin-bottom: 16px; }
+.audio-bar { background: #f0ede4; border-radius: 4px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.audio-play { width: 30px; height: 30px; border-radius: 50%; background: #D4AF37; border: none; cursor: pointer; color: #1a1a1a; font-size: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.audio-track { flex: 1; height: 3px; background: #D4AF37; border-radius: 2px; }
+.audio-time { font-size: 11px; color: #888; white-space: nowrap; }
+.btn-gold-outline { border: 1.5px solid #D4AF37; color: #D4AF37; background: transparent; padding: 9px 20px; border-radius: 3px; font-size: 12px; font-weight: 700; cursor: pointer; display: block; width: 100%; text-align: center; }
+.btn-gold-outline:hover { background: #D4AF37; color: #1a1a1a; }
+
+/* OFFRANDE */
+.offrande-sub { font-size: 12px; color: #555; line-height: 1.6; margin-bottom: 16px; }
+.payment-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+.payment-btn { border: 1px solid #e0d9c8; border-radius: 5px; padding: 10px 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: #fff; cursor: pointer; }
+.payment-btn:hover { border-color: #D4AF37; }
+.payment-label { font-size: 9px; color: #555; font-weight: 700; text-align: center; }
+.pay-icon { width: 32px; height: 20px; border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; color: #fff; }
+.om   { background: #ff6600; }
+.moov { background: #009900; }
+.cbank { background: #888; }
+.paypal { background: #003087; }
+.btn-offrande { background: #7B1C1C; color: #fff; border: none; width: 100%; padding: 11px; border-radius: 4px; font-size: 12px; font-weight: 800; cursor: pointer; margin-top: 10px; }
+.btn-offrande:hover { background: #9a2222; }
+
+/* AGENDA + PARTNER + LIVE */
+.bottom-section { display: grid; grid-template-columns: 1fr 1fr 1fr; border-top: 1px solid #e8dfc0; background: #fdfaf4; }
+.bottom-col { padding: 28px 24px; border-right: 1px solid #e8dfc0; }
+.bottom-col:last-child { border-right: none; }
+.agenda-item { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px; }
+.agenda-date { background: #7B1C1C; color: #fff; border-radius: 5px; padding: 6px 8px; text-align: center; min-width: 44px; line-height: 1.2; }
+.agenda-day  { font-size: 8px; font-weight: 800; }
+.agenda-num  { font-size: 18px; font-weight: 900; }
+.agenda-month{ font-size: 8px; }
+.agenda-event-title { font-size: 12px; font-weight: 700; color: #222; }
+.agenda-event-time  { font-size: 11px; color: #888; margin-top: 2px; }
+
+.partner-box { background: #fff; border: 1px solid #e8dfc0; border-radius: 6px; padding: 18px; }
+.partner-desc { font-size: 12px; color: #555; line-height: 1.6; margin-bottom: 12px; }
+.partner-check { font-size: 12px; color: #333; display: flex; align-items: flex-start; gap: 7px; margin-bottom: 6px; }
+.check-gold { color: #D4AF37; font-weight: 900; font-size: 14px; }
+.btn-partner { background: #D4AF37; color: #1a1a1a; border: none; width: 100%; padding: 11px; border-radius: 4px; font-size: 12px; font-weight: 800; cursor: pointer; margin-top: 14px; }
+.btn-partner:hover { background: #c9a430; }
+
+.live-desc { font-size: 12px; color: #555; margin-bottom: 14px; line-height: 1.5; }
+.live-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+.live-btn { padding: 10px; border-radius: 5px; font-size: 11px; font-weight: 800; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; }
+.live-fb   { background: #1877F2; color: #fff; }
+.live-yt   { background: #FF0000; color: #fff; }
+.live-zoom { background: #2D8CFF; color: #fff; }
+.live-red  { background: #ff6600; color: #fff; }
+.btn-live-main { background: #7B1C1C; color: #fff; border: none; width: 100%; padding: 11px; border-radius: 4px; font-size: 12px; font-weight: 800; cursor: pointer; }
+.btn-live-main:hover { background: #9a2222; }
+
+/* FOOTER */
+footer { background: #1a0a0a; color: #ccc; padding: 40px 32px 20px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 28px; }
+.footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.footer-logo-icon { width: 38px; height: 38px; background: #D4AF37; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; color: #fff; font-weight: bold; }
+.footer-brand-name { font-size: 12px; font-weight: 800; color: #fff; }
+.footer-tagline { font-size: 11px; color: #aaa; line-height: 1.7; }
+.footer-socials { display: flex; gap: 8px; margin-top: 14px; }
+.social-btn { width: 30px; height: 30px; border-radius: 50%; background: #333; border: none; cursor: pointer; color: #ccc; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+.social-btn:hover { background: #D4AF37; color: #1a1a1a; }
+.footer-col-title { font-size: 11px; font-weight: 800; color: #fff; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; }
+.footer-links { list-style: none; }
+.footer-links li { font-size: 12px; color: #aaa; margin-bottom: 6px; cursor: pointer; }
+.footer-links li:hover { color: #D4AF37; }
+.footer-contact-item { display: flex; align-items: flex-start; gap: 8px; font-size: 11px; color: #aaa; margin-bottom: 8px; }
+.footer-contact-icon { color: #D4AF37; font-size: 14px; flex-shrink: 0; }
+.footer-schedule { font-size: 11px; color: #aaa; line-height: 1.9; }
+.footer-schedule strong { color: #fff; }
+.footer-quote { font-size: 11px; color: #D4AF37; font-style: italic; margin-top: 14px; line-height: 1.6; border-left: 2px solid #D4AF37; padding-left: 10px; }
+.footer-bottom { border-top: 1px solid #333; padding-top: 16px; text-align: center; font-size: 11px; color: #555; }
+
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .services-grid-4, .services-grid-3, .content-section, .bottom-section, .footer-grid { grid-template-columns: 1fr; }
+  .service-card, .content-col, .bottom-col { border-right: none; border-bottom: 1px solid #e8dfc0; }
+  .hero-title1 { font-size: 28px; }
+  .hero-title2 { font-size: 30px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon">✝</div>
+    <div>
+      <div class="nav-brand-main">L'AMBASSADE DU ROYAUME DES CIEUX</div>
+      <div class="nav-brand-sub">ÉGLISE · AMOUR · PUISSANCE · DESTINÉE</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#" class="active">ACCUEIL</a>
+    <a href="#">À PROPOS</a>
+    <a href="#">MINISTÈRES</a>
+    <a href="#">ÉVÉNEMENTS</a>
+    <a href="#">ENSEIGNEMENTS</a>
+    <a href="#">CONTACT</a>
+  </div>
+  <button class="btn-nav-don">♥ FAIRE UN DON</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-shape"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Bienvenue à</div>
+    <div class="hero-title1">L'AMBASSADE</div>
+    <div class="hero-title2">DU ROYAUME DES CIEUX</div>
+    <div class="hero-sub">Là où les destinées sont transformées<br>par la puissance du Royaume.</div>
+    <div class="hero-btns">
+      <button class="btn-outline-gold">📻 SUIVRE LE DIRECT</button>
+      <button class="btn-gold-solid">♥ FAIRE UN DON</button>
+      <button class="btn-outline-white">💬 DEMANDER UNE CONSULTATION</button>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <span class="ticker-badge">📢 ANNONCES</span>
+  <div class="ticker-scroll">
+    <span>Veillée de prière ce vendredi à 21h00</span>
+    <span class="ticker-dot">●</span>
+    <span>École des Prophètes : Inscriptions ouvertes</span>
+    <span class="ticker-dot">●</span>
+    <span>Camp de consécration du 15 au 20 Juillet</span>
+    <span class="ticker-dot">●</span>
+    <span>Culte dominical chaque dimanche à 09h00</span>
+  </div>
+  <span class="ticker-see-all">Voir tout →</span>
+</div>
+
+<!-- SERVICES ROW 1 -->
+<section class="services-section">
+  <div class="services-grid-4">
+    <div class="service-card">
+      <div class="service-icon">🎧</div>
+      <div class="service-title">Consultation</div>
+      <ul class="service-items">
+        <li>Par WhatsApp</li>
+        <li>Au bureau</li>
+      </ul>
+      <button class="btn-dark">INSCRIPTION</button>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👤</div>
+      <div class="service-title">Devenir Membre</div>
+      <ul class="service-items">
+        <li>Formulaire d'inscription</li>
+        <li>Informations membre</li>
+      </ul>
+      <button class="btn-dark">INSCRIPTION</button>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎓</div>
+      <div class="service-title">École des Prophètes</div>
+      <ul class="service-items">
+        <li>Formations prophétiques</li>
+        <li>Inscriptions &amp; Modules</li>
+      </ul>
+      <button class="btn-dark">INSCRIPTION</button>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🙏</div>
+      <div class="service-title">Prières</div>
+      <ul class="service-items">
+        <li>Ligne de prière</li>
+        <li>Consécration</li>
+        <li>Retraites spirituelles</li>
+      </ul>
+      <button class="btn-dark-outline">EN SAVOIR PLUS</button>
+    </div>
+  </div>
+
+  <!-- SERVICES ROW 2 -->
+  <div class="services-grid-3">
+    <div class="service-card">
+      <div class="service-icon">👥</div>
+      <div class="service-title">Mentorat</div>
+      <ul class="service-items">
+        <li>Mentorat prophétique</li>
+        <li>Accompagnement</li>
+        <li>Fils de prophètes</li>
+      </ul>
+      <button class="btn-dark">INSCRIPTION</button>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📣</div>
+      <div class="service-title">Invitation</div>
+      <ul class="service-items">
+        <li>Inviter le Révérend Uriel</li>
+        <li>Conférences &amp; Séminaires</li>
+      </ul>
+      <button class="btn-dark-outline">EN SAVOIR PLUS</button>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛒</div>
+      <div class="service-title">Boutique</div>
+      <ul class="service-items">
+        <li>Livres</li>
+        <li>E-books</li>
+        <li>Audios &amp; Vidéos</li>
+      </ul>
+      <button class="btn-dark-outline">EN SAVOIR PLUS</button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT: SERMONS / MEDITATION / OFFRANDE -->
+<section class="content-section">
+  <div class="content-col">
+    <div class="section-header">
+      <span class="section-title">Dernières Prédications</span>
+      <span class="see-all">Voir tout →</span>
+    </div>
+    <div class="sermon-main">
+      <div class="sermon-play-box">
+        <div class="play-circle">▶</div>
+      </div>
+      <div class="sermon-main-title">La puissance de la prière</div>
+      <div class="sermon-main-author">Révérend Uriel</div>
+      <div class="sermon-main-time">23:45</div>
+    </div>
+    <div class="sermon-item">
+      <div class="sermon-thumb">▶</div>
+      <div>
+        <div class="sermon-item-title">Marcher dans les voies du Royaume</div>
+        <div class="sermon-item-time">18:32</div>
+      </div>
+    </div>
+    <div class="sermon-item">
+      <div class="sermon-thumb">▶</div>
+      <div>
+        <div class="sermon-item-title">Le combat spirituel et la victoire</div>
+        <div class="sermon-item-time">25:10</div>
+      </div>
+    </div>
+    <div class="sermon-item">
+      <div class="sermon-thumb">▶</div>
+      <div>
+        <div class="sermon-item-title">Dieu change les saisons</div>
+        <div class="sermon-item-time">21:47</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-col meditation">
+    <div class="section-title" style="text-align:center;margin-bottom:18px;">Méditation du Jour</div>
+    <div class="quote-mark">"</div>
+    <div class="quote-text">Je puis tout par Christ qui me fortifie.</div>
+    <div class="quote-ref">Philippiens 4:13</div>
+    <div class="audio-bar">
+      <button class="audio-play">▶</button>
+      <div class="audio-track"></div>
+      <span class="audio-time">00:00 — 05:32</span>
+    </div>
+    <button class="btn-gold-outline">LIRE LA MÉDITATION</button>
+  </div>
+
+  <div class="content-col">
+    <div class="section-title" style="margin-bottom:10px;">Faire une Offrande</div>
+    <div class="offrande-sub">Soutenez l'œuvre de Dieu et participez à l'avancement du Royaume.</div>
+    <div class="payment-grid">
+      <div class="payment-btn">
+        <div class="pay-icon om">OM</div>
+        <div class="payment-label">Orange Money</div>
+      </div>
+      <div class="payment-btn">
+        <div class="pay-icon moov">M</div>
+        <div class="payment-label">Moov Money</div>
+      </div>
+      <div class="payment-btn">
+        <div class="pay-icon cbank">💳</div>
+        <div class="payment-label">Carte Bancaire</div>
+      </div>
+    </div>
+    <div class="payment-grid">
+      <div class="payment-btn">
+        <div class="pay-icon paypal">PP</div>
+        <div class="payment-label">PayPal</div>
+      </div>
+      <div class="payment-btn" style="grid-column:span 2;">
+        <div style="font-size:18px;">🏦</div>
+        <div class="payment-label">Virement Bancaire</div>
+      </div>
+    </div>
+    <button class="btn-offrande">♥ FAIRE UNE OFFRANDE MAINTENANT</button>
+  </div>
+</section>
+
+<!-- AGENDA / PARTENAIRE / LIVE -->
+<section class="bottom-section">
+  <div class="bottom-col">
+    <div class="section-header">
+      <span class="section-title">Agenda</span>
+      <span class="see-all">Voir tout →</span>
+    </div>
+    <div class="agenda-item">
+      <div class="agenda-date"><div class="agenda-day">DIM</div><div class="agenda-num">26</div><div class="agenda-month">MAI</div></div>
+      <div><div class="agenda-event-title">Culte Dominical</div><div class="agenda-event-time">09h00 – 12h00</div></div>
+    </div>
+    <div class="agenda-item">
+      <div class="agenda-date"><div class="agenda-day">VEN</div><div class="agenda-num">31</div><div class="agenda-month">MAI</div></div>
+      <div><div class="agenda-event-title">Veillée de Prière</div><div class="agenda-event-time">21h00 – 00h00</div></div>
+    </div>
+    <div class="agenda-item">
+      <div class="agenda-date" style="background:#3b6d3b;"><div class="agenda-day">SAM</div><div class="agenda-num">08</div><div class="agenda-month">JUN</div></div>
+      <div><div class="agenda-event-title">École des Prophètes</div><div class="agenda-event-time">10h00 – 14h00</div></div>
+    </div>
+    <div class="agenda-item">
+      <div class="agenda-date" style="background:#3b3b7b;"><div class="agenda-day">LUN</div><div class="agenda-num">15</div><div class="agenda-month">JUN</div></div>
+      <div><div class="agenda-event-title">Camp de Consécration</div><div class="agenda-event-time">15 au 20 Juin 2024</div></div>
+    </div>
+  </div>
+
+  <div class="bottom-col">
+    <div class="section-title" style="margin-bottom:14px;">Devenir Partenaire</div>
+    <div class="partner-box">
+      <div class="partner-desc">Rejoignez notre famille de partenaires et ensemble, avançons le Royaume !</div>
+      <div class="partner-check"><span class="check-gold">✓</span> Soutenez la vision</div>
+      <div class="partner-check"><span class="check-gold">✓</span> Participez aux grands projets</div>
+      <div class="partner-check"><span class="check-gold">✓</span> Recevez des bénédictions spéciales</div>
+      <div class="partner-check"><span class="check-gold">✓</span> Accès aux contenus exclusifs</div>
+      <button class="btn-partner">JE DEVIENS PARTENAIRE</button>
+    </div>
+  </div>
+
+  <div class="bottom-col">
+    <div class="section-title" style="margin-bottom:6px;">Suivre les Réunions</div>
+    <div class="live-desc">Rejoignez-nous en direct sur nos différentes plateformes.</div>
+    <div class="live-grid">
+      <button class="live-btn live-fb">f Facebook Live</button>
+      <button class="live-btn live-yt">▶ YouTube Live</button>
+      <button class="live-btn live-zoom">Zoom</button>
+      <button class="live-btn live-red">↺ Rediffusions</button>
+    </div>
+    <button class="btn-live-main">📻 REJOINDRE LE DIRECT</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <div class="footer-logo-icon">✝</div>
+        <div>
+          <div class="footer-brand-name">L'AMBASSADE DU ROYAUME DES CIEUX</div>
+        </div>
+      </div>
+      <div class="footer-tagline">Une église, une famille, une destinée.<br>Nous existons pour impacter les nations<br>et manifester la gloire du Royaume.</div>
+      <div class="footer-socials">
+        <button class="social-btn">f</button>
+        <button class="social-btn">▶</button>
+        <button class="social-btn">📷</button>
+        <button class="social-btn">♪</button>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Liens Rapides</div>
+      <ul class="footer-links">
+        <li>Accueil</li>
+        <li>À propos</li>
+        <li>Ministères</li>
+        <li>Événements</li>
+        <li>Enseignements</li>
+        <li>Contact</li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contactez-nous</div>
+      <div class="footer-contact-item"><span class="footer-contact-icon">📞</span> +225 07 08 09 10 11</div>
+      <div class="footer-contact-item"><span class="footer-contact-icon">💬</span> +225 07 08 09 10 11</div>
+      <div class="footer-contact-item"><span class="footer-contact-icon">✉</span> contact@ambassadeduroyaume.ci</div>
+      <div class="footer-contact-item"><span class="footer-contact-icon">📍</span> Abidjan, Côte d'Ivoire</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Horaires des Cultes</div>
+      <div class="footer-schedule">
+        <strong>Dimanche :</strong> 09h00 – 12h00<br>
+        <strong>Mercredi :</strong> 18h30 – 20h30<br>
+        <strong>Vendredi :</strong> 21h00 – 23h00
+      </div>
+      <div class="footer-quote">"Car le Royaume de Dieu n'est pas en parole, mais en puissance."<br><strong style="color:#fff;font-style:normal;">1 Corinthiens 4:20</strong></div>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2024 L'Ambassade du Royaume des Cieux · Tous droits réservés.</div>
+</footer>
+
+</body>
+</html>
